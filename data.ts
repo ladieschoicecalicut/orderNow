@@ -1,16 +1,17 @@
 import { Product } from './types';
 
-// Helper to generate products
-const generateProducts = (count: number): Product[] => {
-  return Array.from({ length: count }, (_, i) => ({
-    id: i + 1,
-    name: `Model No. ${i + 1} - Elegant Design`,
-    price: `₹${(Math.floor(Math.random() * 15) + 5) * 100 + 90}`, // Random price 590 - 2090
-    image: `images/model${(i % 5) + 1}.jpg` // Cycles through 5 placeholder names
-  }));
-};
-
-export const products: Product[] = generateProducts(30);
+// Explicit product list generated from images/ directory
+// If image contains a visible price this should be set manually; default price is ₹399
+export const products: Product[] = [
+  { id: 1, name: 'Kurthi — Product 1', price: '₹399', image: 'images/product1.jpeg' },
+  { id: 2, name: 'Kurthi — Product 2', price: '₹399', image: 'images/product2.jpeg' },
+  { id: 3, name: 'Kurthi — Product 2 (duplicate)', price: '₹399', image: 'images/product2.jpeg.jpeg' },
+  { id: 4, name: 'Kurthi — Product 3', price: '₹399', image: 'images/product3.jpeg' },
+  { id: 5, name: 'Kurthi — Product 4', price: '₹399', image: 'images/product4.jpeg' },
+  { id: 6, name: 'Kurthi — Product 5', price: '₹399', image: 'images/product5.jpeg' },
+  { id: 7, name: 'Kurthi — Product 6', price: '₹399', image: 'images/product6.jpeg' },
+  { id: 8, name: 'Kurthi — Product 7', price: '₹399', image: 'images/product 7.jpeg' }
+];
 
 export const getProductsForPage = (pageStr: string) => {
   const itemsPerPage = 9;
