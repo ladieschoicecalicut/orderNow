@@ -162,7 +162,7 @@ const ProductCard: React.FC<{ product: Product }> = ({ product }) => {
       <a href={whatsappUrl} target="_blank" rel="noreferrer" className="relative aspect-[3/4] overflow-hidden block cursor-pointer">
         <div className="absolute inset-0 bg-rose-500/10 z-10 group-hover:bg-rose-500/0 transition duration-500"></div>
         <img 
-          src={product.image} 
+          src={encodeURI(String(product.image))} 
           alt={product.name}
           className="w-full h-full object-cover group-hover:scale-110 transition duration-700 ease-out"
           onError={(e) => {
@@ -221,15 +221,15 @@ const SlideshowHero = ({ setView }: { setView: (v: PageView) => void }) => {
       {slides.map((img, index) => (
         <img
           key={index}
-          src={img}
+          src={encodeURI(String(img))}
           alt={`Slide ${index}`}
           className={`slide-image ${index === currentSlide ? 'active' : ''}`}
           onError={(e) => {
              // If experience_banner.jpg fails, we fallback to a high quality unplash image that matches the description
              if (index === 0) {
-                 (e.target as HTMLImageElement).src = "https://images.unsplash.com/photo-1610030469983-98e550d6193c?q=80&w=1974&auto=format&fit=crop";
+               (e.target as HTMLImageElement).src = "https://images.unsplash.com/photo-1610030469983-98e550d6193c?q=80&w=1974&auto=format&fit=crop";
              } else {
-                 (e.target as HTMLImageElement).src = "https://images.unsplash.com/photo-1551488852-0801751acbe3?q=80&w=2070&auto=format&fit=crop";
+               (e.target as HTMLImageElement).src = "https://images.unsplash.com/photo-1551488852-0801751acbe3?q=80&w=2070&auto=format&fit=crop";
              }
           }}
         />
@@ -386,7 +386,7 @@ const AboutView = () => (
           <div className="bg-slate-800 relative h-full min-h-[400px]">
              {/* Updated with the experience banner image */}
              <img 
-               src="images/experience_banner.jpg" 
+               src={encodeURI('images/experience_banner.jpg')} 
                alt="Expert Ladies Tailoring" 
                className="absolute inset-0 w-full h-full object-cover"
                onError={(e) => {
